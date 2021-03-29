@@ -1,0 +1,447 @@
+Villanova
+Wildcats
+The Wildcats are from Villanova, PA. They known to play a spicy game and bring the fire AYE AYE AYEEEE.
+1
+77.2
+62.7
+
+Mt. St. Mary's
+Mountaineers
+Another great team from Emmitsburg, MD, the Mountaineers will always climb to the top of whatever sloped obstacle is in their path.
+16
+67.9
+68.7
+
+Wisconsin
+Badgers
+This team from Madison, WI may be annoying but they'll badger their way right to the championship!
+8
+72.4
+62.1
+
+Virginia Tech
+Hokies
+The Hokies are a team rooted in Blacksburg, VA. Not to be confused with the "Hoagies"
+9
+79.1
+74.7
+
+Virginia
+Cavaliers
+This team wants to be the very best, that no one ever was.
+5
+66.1
+56.4
+
+UNCW
+Seahawks
+The Seahawks from the University of North Carolina, Wilmington. What a team. What. A. Team. Go Seahawks!
+12
+84.8
+75.0
+
+Florida
+Gators
+The Gators can take on anyone, except Steve Irwin... Respect. (or is that crocodiles?).
+4
+77.9
+66.5
+
+East Tenn. St.
+Buccaneers
+The best part of waking up is Folgers in your cup. Also the Bucaneers are pretty good too.
+13
+71.1
+67.7
+
+SMU
+Mustangs
+Rev up your horse and buggies because the mustangs are coming through strong!
+6
+74.3
+60.0
+
+USC
+Trojans
+Not your average contraceptive.
+11
+78.0
+76.6
+
+Baylor
+Bears
+From Waco, TX, the Bears will give you something to remember.
+3
+72.9
+63.7
+
+New Mexico St.
+Aggies
+The Aggies famous for pouring their milk before their cereal, yikes!
+14
+78.8
+67.9
+
+South Carolina
+Gamecocks
+From the gritty town of Columbia, SC, these team members have a bowl of nails for breakfast every morning.
+7
+73.1
+65.2
+
+Marquette
+Golden Eagles
+The Golden Eagles of beautiful Milwaukee, Wisconsin, gliding through the skies to victory!!!
+10
+82.2
+75.5
+
+Duke
+Blue Devils
+There's blue raspberry and then there's the Blue Devil's from Durham, NC. 
+2
+80.8
+70.2
+
+Troy
+Trojans
+Not your average contraceptive, part II.
+15
+78.1
+72.1
+
+Kansas
+Jayhawks
+The Kansas Jayhawks will wipe the floor with their competators!
+1
+83.2
+71.9
+
+UC Davis
+Aggies
+Never underestimate a UC Davis Aggie. Never overestimate one either...
+16
+70.1
+69.6
+
+Miami(Fla.)
+Hurricanes
+When they're not kicking back in beautful 80 degree weather, they're kicking back in beautiful 60 degree weather.
+8
+69.0
+64.1
+
+Michigan St.
+Cyclones
+The Spartans from East Lansing, Michigan. Keep up the good work guys!
+9
+71.9
+68.7
+
+Iowa St.
+Wolf Pack
+The Cyclones bring the ruckus like Wu-Tang!
+5
+80.8
+72.3
+
+Nevada
+Wolf Pack
+The Wolf Pack from Reno, NV. *Howls into the night sky*
+12
+79.8
+71.3
+
+Purdue
+Bloilermakers
+The Boilermakers will... boil... the other teams???
+4
+79.7
+68.4
+
+Vermont
+Catamounts
+Burlington, Vt residents who named their team after a rejected Pokemon. Good job Catamounts.
+13
+73.5
+62.1
+
+Creighton
+Bluejays
+Ahh yes, the Bluejays of Creighton University have never let anyone down!
+6
+81.8
+72.8
+
+Rhode Island
+Rams
+Despite its small size, Rhode Island will RAM the other teams out of its way.
+11
+73.6
+65.4
+
+Oregon
+Ducks
+Quack Quack make way for the Ducks!
+3
+78.9
+65.8
+
+Iona
+Gaels
+The Gaels from New Rochelle, NY. They're just trying their hardest.
+14
+80.4
+76.8
+
+Michigan
+Wolverines
+The Wolverines can't remember who they are, but they'll slice through the competition no problem!
+7
+75.0
+66.4
+
+Oklahoma State
+Cowboys
+The Stillwater, OK Cowboys are ripe-and-ready to go.
+10
+85.7
+74.2
+
+Louisville
+Cardinals
+The Cardinals are better than you think they are. But still not that great.
+2
+77.3
+66.0
+
+Jacksonville St.
+Gamecocks
+Where do I even start with this team. They're the Gamecocks! 
+15
+69.5
+67.9
+
+Gonzaga
+Bulldogs
+The Gonzaga Bulldogs from Spokane, Washington cut through the competition like smooth buttery butter.
+1
+82.6
+61.5
+
+South Dakota St.
+Bulldogs
+They'll hop their way to victory!
+16
+76.7
+77.1
+
+Northwestern
+Wildcats
+The pinnacle of men's basketball! It's North-WESTERN!
+8
+76.0
+65.5
+
+Vanderbilt
+Commodores
+The Commodores will smell you later, losers.
+9
+71.1
+68.1
+
+Notre Dame
+Fighting Irish
+"They'll squeesh yee oonder ther boot, swear on me mum. "
+5
+77.3
+69.3
+
+Princeton
+Tigers
+Theeyyyyyyrreeeeeeee GREAT!!!!
+12
+71.6
+61.4
+
+West Virginia
+Mountaineers
+Mountaineering is not the same sport as basketball, but they try their best. Go Mountaineers!
+4
+81.5
+66.7
+
+Bucknell
+Bison
+What did the father say to his son before leaving? "Bi-son"
+13
+76.2
+67.9
+
+Maryland
+Terrapins
+This team makes a good omellete out of the other teams.
+6
+73.9
+68.1
+
+Xavier
+Musketeers
+Xavier!
+11
+74.6
+71.3
+
+Florida State
+Seminoles
+The Seminoles have tried so hard, and got so far. But in the end, it doesn't even matter.
+3
+82.1
+72.1
+
+FGCU
+Eagles
+Florida Gulf Coast University's team mascot is an eagle. Real original FGCU.
+14
+79.4
+69.3
+
+St. Mary's(Cal.)
+Gaels
+From Morega, CA these guys never back down even in the face of utter defeat.
+7
+72.0
+57.5
+
+VCU
+Rams
+Virginia Commonwealth University, breakfast of champions.
+10
+74.7
+66.9
+
+Arizona
+Wildcats
+The Tucston, Arizona Wildcats are pretty good, but are they GREAT?
+2
+76.6
+65.9
+
+North Dakota
+Fighting Hawks
+The Fighting Hawks located in Grand Sporks, ND. Oh, did I say sporks? I meant Forks.
+15
+80.6
+73.7
+
+North Carolina
+Tar Heels
+Chapell Hill is the home of the Tar Heels of the University of North Carolina.
+1
+84.4
+70.6
+
+Texas Southern
+Tigers
+Theyyyyrreeeeee.... great too, but more south!
+16
+74.1
+72.6
+
+Arkansas
+Razorbacks
+The Razorbacks from the big ol' town of Feyetteville, Arkansas are truely an unforgiving team.
+8
+79.3
+73.9
+
+Seton Hall
+Pirates
+YARRRRRGGGG from South Orange, NJ.
+9
+73.2
+70.4
+
+Minnesota
+Golden Gophers
+In Minneapolis resides the fearsome Golden Gophers. Ohhhhhh *Thunder in the distance*  
+5
+75.2
+69.4
+
+Middle Tenn.
+Blue Raiders
+The Blue Raiders are from Murfreesboro, TN. Don't mess with these guys!
+12
+74.9
+63.9
+
+Butler
+Bulldogs
+The Bulldogs won't let you sleep with all that borkin'! Bork Bork!
+4
+76.3
+68.9
+
+Winthrop
+Eagles
+The Eagles from Rock Hill, South Carolina will knock your socks off!
+13
+79.2
+70.4
+
+Cincinnati
+Bearcats
+The Bearcats. Is it a bear, or is it a cat? Ammiright. Cincinnati, OH.
+6
+74.3
+61.3
+
+Kansas St.
+Wildcats
+The Wildcats won the award for most used team mascot, but can they win the Championship?
+11
+72.1
+67.8
+
+UCLA
+Bruins
+This University is in California! And their team nickname is the Bruins! Hooray!
+3
+89.8
+75.5
+
+Kent State
+Golden Flashes
+From Kent, OH. The Golden Flashes are making plays like nobody's business. Seriously.
+14
+77.0
+73.0
+
+Dayton
+Flyers
+The Flyers are their name, basketball's their game.
+7
+75.9
+66.4
+
+Wichita State
+Shockers
+You'll certainly be SHOCKED if these guy win.
+10
+81.0
+62.4
+
+Kentucky
+Wildcats
+The Wildcats of the University of Kentucky came in a close second for the award for most used team mascot. Better luck next time guys!
+2
+84.9
+71.5
+
+Northern Kentucky
+Norse
+Residing in the beautiful, but repetative Highland Heights of Kentucky. These guys are pretty dang high up.
+15
+74.8
+69.5
