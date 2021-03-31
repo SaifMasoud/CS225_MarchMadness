@@ -178,6 +178,7 @@ public class MarchMadnessGUI extends Application {
        full.add(bracketPane.getFullPane(),0,0);
        full.setDisable(true);
        ScrollPane scrollPane = new ScrollPane(full);
+       //Shane Callahan, small fix, just added ScrollPane to GridPane to make it centered.
        GridPane centerPane = new GridPane();
        centerPane.add(scrollPane, 0, 0);
        centerPane.setAlignment(Pos.CENTER);
