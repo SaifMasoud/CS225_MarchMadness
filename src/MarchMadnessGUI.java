@@ -293,6 +293,7 @@ public class MarchMadnessGUI extends Application {
             bracketPane=new BracketPane(selectedBracket);
             displayPane(bracketPane);
         });
+        // Saif Masoud: save users progress.
         saveBtn.setOnAction(event -> {
             seralizeBracket(selectedBracket);
         });
