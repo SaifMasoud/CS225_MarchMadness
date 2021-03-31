@@ -226,7 +226,7 @@ public class BracketPane extends BorderPane {
                     leftCenteredPane.setAlignment(Pos.CENTER);
                     leftCenteredPane.add(imageViewLeft, 0, 0);
                         leftCenteredPane.setGridLinesVisible(true);
-                    //this.setTop(leftCenteredPane);
+                    this.setTop(leftCenteredPane);
 
                     GridPane rightCenteredPane = new GridPane();
                     rightCenteredPane.setAlignment(Pos.CENTER);
