@@ -252,7 +252,7 @@ public class BracketPane extends GridPane {
                                 t.setEffect(null);
                         });
                         t.setOnMouseClicked(mouseEvent -> {
-                                add(null,0,1);
+                                //add(null,0,1);
                                 /**
                                  * @update Grant & Tyler 
                                  * 			panes are added as ScrollPanes to retain center alignment when moving through full-view and region-view
