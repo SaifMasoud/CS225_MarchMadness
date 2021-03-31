@@ -7,6 +7,8 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.effect.InnerShadow;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
@@ -19,6 +21,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -203,6 +206,40 @@ public class BracketPane extends BorderPane {
 
                 // set default center to the button grid
                 this.setCenter(buttonGrid);
+                //Shane Callahan Start Editions
+                Image imageLeft;
+                Image imageRight;
+                ImageView imageViewLeft = new ImageView();
+                ImageView imageViewRight = new ImageView();
+                try {
+                        FileInputStream inputstreamLeft = new FileInputStream("March_Madness_Logo_Test1.png"); 
+                        FileInputStream inputstreamRight = new FileInputStream("Basketball_Logo_1.png"); 
+                        imageLeft = new Image(inputstreamLeft);
+                        imageRight = new Image(inputstreamRight);
+                        imageViewLeft = new ImageView(imageLeft);
+                        imageViewRight = new ImageView(imageRight);
+                    } catch (Exception e) {
+                        //imageRight = new Image("githubLink");
+                        System.out.println("For later");
+                    }
+                    GridPane leftCenteredPane = new GridPane();
+                    leftCenteredPane.setAlignment(Pos.CENTER);
+                    leftCenteredPane.add(imageViewLeft, 0, 0);
+                        leftCenteredPane.setGridLinesVisible(true);
+                    //this.setTop(leftCenteredPane);
+
+                    GridPane rightCenteredPane = new GridPane();
+                    rightCenteredPane.setAlignment(Pos.CENTER);
+                    rightCenteredPane.add(imageViewRight, 0, 0);
+                        rightCenteredPane.setGridLinesVisible(true);
+                    //this.setRight(rightCenteredPane);
+
+                    
+                    //this.getLeft().setScaleX(.5);
+                    //this.getLeft().setScaleY(.5);
+                    //this.getLeft().setAlignment();
+                
+                    //end editions
 
                 for (StackPane t : buttons) {
                         t.setOnMouseEntered(mouseEvent -> {
@@ -222,6 +259,7 @@ public class BracketPane extends BorderPane {
                                 center.add(new ScrollPane(panes.get(t)), 0, 0);
                                 center.setAlignment(Pos.CENTER);
                                 setCenter(center);
+                                setTop(new Label());
                                 //Grant 5/7 this is for clearing the tree it kind of works 
                                 displayedSubtree=buttons.indexOf(t)==7?0:buttons.indexOf(t)+3;
                         });
