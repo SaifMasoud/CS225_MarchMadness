@@ -223,11 +223,11 @@ public class BracketPane extends GridPane {
                         System.out.println("For later");
                     }
                     GridPane leftCenteredPane = new GridPane();
-                    leftCenteredPane.setAlignment(Pos.CENTER);
+                    leftCenteredPane.setAlignment(Pos.TOP_CENTER);
                     leftCenteredPane.add(imageViewLeft, 0, 0);
                         leftCenteredPane.setGridLinesVisible(true);
                     this.add(leftCenteredPane,0,0);
-                    setAlignment(Pos.CENTER);
+                    setAlignment(Pos.TOP_CENTER);
 
                     GridPane rightCenteredPane = new GridPane();
                     rightCenteredPane.setAlignment(Pos.CENTER);
