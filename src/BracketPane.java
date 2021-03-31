@@ -31,7 +31,7 @@ import javafx.scene.layout.Region;
 /**
  * Created by Richard and Ricardo on 5/3/17.
  */
-public class BracketPane extends BorderPane {
+public class BracketPane extends GridPane {
 
         /**
          * Reference to the graphical representation of the nodes within the bracket.
@@ -205,7 +205,7 @@ public class BracketPane extends BorderPane {
                 buttonGrid.setAlignment(Pos.CENTER);
 
                 // set default center to the button grid
-                this.setCenter(buttonGrid);
+                this.add(buttonGrid,0,1);
                 //Shane Callahan Start Editions
                 Image imageLeft;
                 Image imageRight;
@@ -226,7 +226,8 @@ public class BracketPane extends BorderPane {
                     leftCenteredPane.setAlignment(Pos.CENTER);
                     leftCenteredPane.add(imageViewLeft, 0, 0);
                         leftCenteredPane.setGridLinesVisible(true);
-                    //this.setTop(leftCenteredPane);
+                    this.add(leftCenteredPane,0,0);
+                    setAlignment(Pos.CENTER);
 
                     GridPane rightCenteredPane = new GridPane();
                     rightCenteredPane.setAlignment(Pos.CENTER);
@@ -251,15 +252,15 @@ public class BracketPane extends BorderPane {
                                 t.setEffect(null);
                         });
                         t.setOnMouseClicked(mouseEvent -> {
-                                setCenter(null);
+                                add(null,0,1);
                                 /**
                                  * @update Grant & Tyler 
                                  * 			panes are added as ScrollPanes to retain center alignment when moving through full-view and region-view
                                  */
                                 center.add(new ScrollPane(panes.get(t)), 0, 0);
                                 center.setAlignment(Pos.CENTER);
-                                setCenter(center);
-                                setTop(new Label());
+                                add(center,0,1);
+                                //setTop(new Label());
                                 //Grant 5/7 this is for clearing the tree it kind of works 
                                 displayedSubtree=buttons.indexOf(t)==7?0:buttons.indexOf(t)+3;
                         });
