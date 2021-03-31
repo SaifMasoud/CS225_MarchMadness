@@ -10,20 +10,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
+import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToolBar;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -352,6 +346,13 @@ public class MarchMadnessGUI extends Application {
 
         Label message = new Label();
         loginPane.add(message, 1, 5);
+
+        // Saif Masoud: Add a drop-down for registered users
+        ObservableList<String> options =
+                FXCollections.observableArrayList(playerMap.keySet());
+        ComboBox usersDropDown = new ComboBox(options);
+        usersDropDown.setOnAction(event -> enterUser.setText((String) usersDropDown.getValue()));
+        loginPane.add(usersDropDown, 2, 1);
 
         signButton.setOnAction(event -> {
 
