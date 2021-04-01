@@ -43,7 +43,7 @@ import javafx.stage.Stage;
 public class MarchMadnessGUI extends Application {
     
     
-    //all the gui ellements
+    //all the gui elements
     private BorderPane root;
     private ToolBar toolBar;
     private ToolBar btoolBar;
@@ -111,9 +111,20 @@ public class MarchMadnessGUI extends Application {
         Scene scene = new Scene(root);
         primaryStage.setMaximized(true);
 
+        //logout button display ET
+        createLogOut();
+
         primaryStage.setTitle("March Madness Bracket Simulator");
         primaryStage.setScene(scene);
         primaryStage.show();
+
+    }
+    //Creates a logout button for user to exit game at any time. ET
+    private void createLogOut() {
+        Button logOut = new Button("logout");
+        btoolBar.getItems().add(logOut);
+        logOut.setOnAction( e -> login());
+
     }
 
     /**
@@ -329,7 +340,7 @@ public class MarchMadnessGUI extends Application {
         Text welcomeMessage = new Text("March Madness Login Welcome");
         loginPane.add(welcomeMessage, 0, 0, 2, 1);
 
-        Label userName = new Label("User Name: ");
+        Label userName = new Label("username: ");       //Edited username ET
         loginPane.add(userName, 0, 1);
 
         TextField enterUser = new TextField();
@@ -407,7 +418,7 @@ public class MarchMadnessGUI extends Application {
      * The Exception handler
      * Displays a error message to the user
      * and if the error is bad enough closes the program
-     * @param msg message to be displayed to the user
+     * msg message to be displayed to the user
      * @param fatal true if the program should exit. false otherwise 
      */
     private void showError(Exception e,boolean fatal){
@@ -502,7 +513,7 @@ public class MarchMadnessGUI extends Application {
       /**
      * Tayon Watson 5/5
      * deseralizedBracket
-     * @param filename of the seralized bracket file
+     * filename of the seralized bracket file
      * @return deserialized bracket 
      */
     private ArrayList<Bracket> loadBrackets()
