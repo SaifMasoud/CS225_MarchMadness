@@ -54,6 +54,7 @@ public class MarchMadnessGUI extends Application {
     private Button clearButton;
     private Button resetButton;
     private Button finalizeButton;
+    private Button saveBtn = new Button("Save");
     
     //allows you to navigate back to division selection screen
     private Button back;
@@ -277,6 +278,7 @@ public class MarchMadnessGUI extends Application {
                 clearButton,
                 resetButton,
                 finalizeButton,
+                saveBtn,
                 back=new Button("Choose Division"),
                 createSpacer()
         );
@@ -296,6 +298,9 @@ public class MarchMadnessGUI extends Application {
         back.setOnAction(e->{
             bracketPane=new BracketPane(selectedBracket);
             displayPane(bracketPane);
+        });
+        saveBtn.setOnAction(event -> {
+            seralizeBracket(selectedBracket);
         });
     }
     
