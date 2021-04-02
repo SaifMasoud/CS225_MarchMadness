@@ -31,7 +31,7 @@ import javafx.scene.layout.Region;
 /**
  * Created by Richard and Ricardo on 5/3/17.
  */
-public class BracketPane extends BorderPane {
+public class BracketPane extends StackPane {
 
         /**
          * Reference to the graphical representation of the nodes within the bracket.
@@ -205,7 +205,6 @@ public class BracketPane extends BorderPane {
                 buttonGrid.setAlignment(Pos.CENTER);
 
                 // set default center to the button grid
-                this.setCenter(buttonGrid);
                 //Shane Callahan Start Editions
                 Image imageLeft;
                 Image imageRight;
@@ -223,24 +222,28 @@ public class BracketPane extends BorderPane {
                         System.out.println("For later");
                     }
                     GridPane leftCenteredPane = new GridPane();
-                    leftCenteredPane.setAlignment(Pos.CENTER);
+                    leftCenteredPane.setAlignment(Pos.TOP_CENTER);
                     leftCenteredPane.add(imageViewLeft, 0, 0);
-                        leftCenteredPane.setGridLinesVisible(true);
-                    this.setTop(leftCenteredPane);
+                        //leftCenteredPane.setGridLinesVisible(true);
+                    this.getChildren().addAll(leftCenteredPane);
 
                     GridPane rightCenteredPane = new GridPane();
-                    rightCenteredPane.setAlignment(Pos.CENTER);
+                    rightCenteredPane.setAlignment(Pos.CENTER_RIGHT);
                     rightCenteredPane.add(imageViewRight, 0, 0);
-                        rightCenteredPane.setGridLinesVisible(true);
-                    //this.setRight(rightCenteredPane);
+                        //rightCenteredPane.setGridLinesVisible(true);
+                    this.getChildren().addAll(rightCenteredPane);
 
                     
                     //this.getLeft().setScaleX(.5);
                     //this.getLeft().setScaleY(.5);
                     //this.getLeft().setAlignment();
                 
-                    //end editions
+                    
 
+                this.getChildren().addAll(buttonGrid);
+
+                //end editions
+                
                 for (StackPane t : buttons) {
                         t.setOnMouseEntered(mouseEvent -> {
                                 t.setStyle("-fx-background-color: lightblue;");
@@ -251,15 +254,17 @@ public class BracketPane extends BorderPane {
                                 t.setEffect(null);
                         });
                         t.setOnMouseClicked(mouseEvent -> {
-                                setCenter(null);
+                                //setCenter(null);
                                 /**
                                  * @update Grant & Tyler 
                                  * 			panes are added as ScrollPanes to retain center alignment when moving through full-view and region-view
                                  */
                                 center.add(new ScrollPane(panes.get(t)), 0, 0);
                                 center.setAlignment(Pos.CENTER);
-                                setCenter(center);
-                                setTop(new Label());
+                                this.getChildren().addAll(center);
+                                this.getChildren().get(0).setVisible(false);
+                                this.getChildren().get(1).setVisible(false);
+                                //setTop(new Label());
                                 //Grant 5/7 this is for clearing the tree it kind of works 
                                 displayedSubtree=buttons.indexOf(t)==7?0:buttons.indexOf(t)+3;
                         });
