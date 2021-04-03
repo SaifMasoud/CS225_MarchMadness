@@ -1,8 +1,4 @@
-package debug.debug;
-
 import javafx.event.EventHandler;
-import javafx.event.EventType;
-import javafx.geometry.Insets;
 import javafx.geometry.NodeOrientation;
 import javafx.geometry.Point2D;
 import javafx.geometry.Pos;
@@ -15,16 +11,13 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
-
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -49,8 +42,6 @@ public class BracketPane extends BorderPane {
          * Maps the text "buttons" to it's respective grid-pane
          */
         private HashMap<StackPane, Pane> panes;
-        VBox vBox=new VBox();
-        HBox panegrid=new HBox();
         /**
          * Reference to the current bracket.
          */
@@ -98,7 +89,6 @@ public class BracketPane extends BorderPane {
                 //conditional added by matt 5/7 to differentiate between left and right mouse click
                 if (mouseEvent.getButton().equals(MouseButton.PRIMARY)) {
                         BracketNode n = (BracketNode) mouseEvent.getSource();
-                        n.setRect(Color.YELLOW);  ///JOhn did this/////////////////////////////////////
                         int treeNum = bracketMap.get(n);
                         int nextTreeNum = (treeNum - 1) / 2;
                         if (!nodeMap.get(nextTreeNum).getName().equals(n.getName())) {
@@ -135,13 +125,10 @@ public class BracketPane extends BorderPane {
          */
         private EventHandler<MouseEvent> enter = mouseEvent -> {
                 BracketNode tmp = (BracketNode) mouseEvent.getSource();
-                tmp.setStyle("-fx-background-color: green;");
-                tmp.setEffect(new InnerShadow(10, Color.GREEN));
-                
+                tmp.setStyle("-fx-background-color: lightcyan;");
+                tmp.setEffect(new InnerShadow(10, Color.LIGHTCYAN));
         };
-        
-         
-        
+
         /**
          * Handles mouseExited events for BracketNode objects
          */
@@ -154,7 +141,6 @@ public class BracketPane extends BorderPane {
 
         public GridPane getFullPane() {
                 return fullPane;
-                
         }
 
         private GridPane center;
@@ -194,16 +180,6 @@ public class BracketPane extends BorderPane {
                 //buttons.add(customButton("FINAL"));
                 //panes.put(buttons.get(5), finalPane);
                 fullPane = new GridPane();
-                //fullPane.setStyle("-fx-background-color: black");
-                fullPane.setMaxHeight(1600);
-                
-                this.setCenter(labelstry());
-                
-                /////////////////////////////////////////
-             
-                /////////////////////////////////////////
-                
-                
                 GridPane gp1 = new GridPane();
                 gp1.add(roots.get(0), 0, 0);
                 gp1.add(roots.get(1), 0, 1);
@@ -211,25 +187,12 @@ public class BracketPane extends BorderPane {
                 gp2.add(roots.get(2), 0, 0);
                 gp2.add(roots.get(3), 0, 1);
                 gp2.setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
-                //gp1.setStyle("-fx-background-color:  blue;");
-                //gp2.setStyle("-fx-background-color: green;");
-                ///////////////////////////////////////////
-                 //fullPane.setStyle("-fx-background-color: yellow;");
-                panegrid.getChildren().add(labelstry());
-                panegrid.getChildren().add(labelstry1());
-                panegrid.getChildren().add(labelstry3());
-                //panegrid.add(labelstry(), 2, 0);
- 				////////////////////////////////////////////////////////////
+
                 fullPane.add(gp1, 0, 0);
                 fullPane.add(finalPane, 1, 0, 1, 2);
-                fullPane.add(gp2, 2, 0 );
-                //fullPane.add(labelstry(), 0, 0);
-                
-                
+                fullPane.add(gp2, 2, 0);
                 fullPane.setAlignment(Pos.CENTER);
-                vBox.getChildren().add(panegrid);
-                vBox.getChildren().add(fullPane);
-                panes.put(buttons.get((buttons.size() - 1)), vBox);
+                panes.put(buttons.get((buttons.size() - 1)), fullPane);
                 finalPane.toBack();
 
                 // Initializes the button grid
@@ -353,17 +316,15 @@ public class BracketPane extends BorderPane {
 
         public Pane createFinalFour() {
                 Pane finalPane = new Pane();
-                //finalPane.setMinSize(2000, 2000);
-                BracketNode nodeFinal0 = new BracketNode("", 162, 400, 70, 0);
-                BracketNode nodeFinal1 = new BracketNode("", 75, 500, 70, 0);
-                BracketNode nodeFinal2 = new BracketNode("", 250, 500, 70, 0);
+                BracketNode nodeFinal0 = new BracketNode("", 162, 300, 70, 0);
+                BracketNode nodeFinal1 = new BracketNode("", 75, 400, 70, 0);
+                BracketNode nodeFinal2 = new BracketNode("", 250, 400, 70, 0);
                 nodeFinal0.setName(currentBracket.getBracket().get(0));
                 nodeFinal1.setName(currentBracket.getBracket().get(1));
                 nodeFinal2.setName(currentBracket.getBracket().get(2));
                 finalPane.getChildren().add(nodeFinal0);
                 finalPane.getChildren().add(nodeFinal1);
                 finalPane.getChildren().add(nodeFinal2);
-                //finalPane.getChildren().add(Labels());
                 bracketMap.put(nodeFinal1, 1);
                 bracketMap.put(nodeFinal2, 2);
                 bracketMap.put(nodeFinal0, 0);
@@ -382,11 +343,10 @@ public class BracketPane extends BorderPane {
                 nodeFinal2.setOnMouseClicked(clicked);
                 nodeFinal2.setOnMouseDragEntered(enter);
                 nodeFinal2.setOnMouseDragExited(exit);
-                nodeFinal0.setStyle("-fx-border-color: black");
-                nodeFinal1.setStyle("-fx-border-color: black");
-                nodeFinal2.setStyle("-fx-border-color: black");
-                finalPane.setMinWidth(600.0);
-               
+                nodeFinal0.setStyle("-fx-border-color: darkblue");
+                nodeFinal1.setStyle("-fx-border-color: darkblue");
+                nodeFinal2.setStyle("-fx-border-color: darkblue");
+                finalPane.setMinWidth(400.0);
 
                 return finalPane;
         }
@@ -406,14 +366,13 @@ public class BracketPane extends BorderPane {
                         createVertices(220, 60, 100, 100, 2, 200);
                         createVertices(120, 35, 100, 50, 4, 100);
                         createVertices(20, 25, 100, 25, 8, 50);
-                        //labels();
                         for (BracketNode n : nodes) {
                                 n.setOnMouseClicked(clicked);
                                 n.setOnMouseEntered(enter);
                                 n.setOnMouseExited(exit);
                         }
                 }
-               
+
                 /**
                  * The secret sauce... well not really,
                  * Creates 3 lines in appropriate location unless it is the last line.
@@ -484,26 +443,14 @@ public class BracketPane extends BorderPane {
                         this.setMaxSize(rX, rY);
                         this.teamName = teamName;
                         rect = new Rectangle(rX, rY);
+                        rect.setFill(Color.TRANSPARENT);
                         name = new Label(teamName);
-						
-                        	rect.setFill(Color.TRANSPARENT);
-						
                         // setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
                         name.setTranslateX(5);
-                        getChildren().addAll( rect,name);
+                        getChildren().addAll(name, rect);
                 }
-                
-                @SuppressWarnings("unused")
-				public BracketNode() {
-                   
-            }
-                
-                public void setBackground(Color green) {
-					// TODO Auto-generated method stub
-					
-				}
 
-				/**
+                /**
                  * @return teamName The teams name.
                  */
                 public String getName() {
@@ -517,76 +464,5 @@ public class BracketPane extends BorderPane {
                         this.teamName = teamName;
                         name.setText(teamName);
                 }
-
-				public Rectangle getRect() {
-					return rect;
-				}
-
-				@SuppressWarnings("unused")
-				public void setRect(Color j) {   //john////////////
-					this.rect.setFill(j);
-				}
-                   
         }
-        
-        //John is doing that
-        
-		@SuppressWarnings({ "exports", "static-access" })
-		public HBox labelstry() {
-			HBox pane=new HBox();
-			 pane.setStyle("-fx-background-color: red;");
-			Insets sert=new Insets(0 , 0, 0,45);
-			String[] label= {"(Round 1) ","(Round 2 )","(Round 3 )","( Round 4 )","( Round 5 )"};
-			for (int i = 0; i < label.length; i++) {
-				Label lab=new Label(label[i]);
-				lab.setTextFill(Color.WHITE);
-				lab.setStyle("-fx-background-color: red;");
-				pane.setMargin(lab , sert);
-        		pane.getChildren().addAll(lab);
-        		
-			}
-			System.out.println(pane.getWidth());
-        	return pane;
-        }
-		
-		
-		
-		@SuppressWarnings({ "exports", "static-access" })
-		public HBox labelstry1() {
-			HBox pane=new HBox();
-			pane.setPrefWidth(600);
-			pane.setAlignment(Pos.CENTER);
-			//pane.setSpacing(40);
-			pane.setStyle("-fx-background-color: blue;");
-			Insets sert=new Insets(0 , 0, 0,45);
-			Label lab=new Label(" FINAL GAME 🏆 ");
-				lab.setTextFill(Color.WHITE);
-				//lab.setStyle("-fx-background-color: red;");
-				pane.setMargin(lab , sert);
-        		pane.getChildren().addAll(lab);
-			 return pane;
-        }
-		
-		@SuppressWarnings({ "exports", "static-access" })
-		public HBox labelstry3() {
-			HBox pane=new HBox();
-			pane.setAlignment(Pos.BASELINE_RIGHT);
-			 pane.setStyle("-fx-background-color: red;");
-			Insets sert=new Insets(0 , 0, 0,40);
-			String[] label= {"(Round 5) ","(Round 4 )","(Round 3 )","( Round 2 )","( Round 1 )"};
-			for (int i = 0; i < label.length; i++) {
-				Label lab=new Label(label[i]);
-				lab.setTextFill(Color.WHITE);
-				lab.setStyle("-fx-background-color: red;");
-				pane.setMargin(lab , sert);
-        		pane.getChildren().addAll(lab);
-        	 }
-        	return pane;
-        }
-		
-		
-		
-		
-		
-		
 }
