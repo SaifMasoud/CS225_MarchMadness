@@ -299,9 +299,6 @@ public class BracketPane extends StackPane {
                                 this.getChildren().addAll(center);
                                 this.getChildren().get(1).setVisible(false);
                                 this.getChildren().get(2).setVisible(false);
-                                if(t.equals(buttons.get(4))){// == buttons.get(4)
-                                        this.getChildren().get(0).setVisible(true);
-                                }
                                 //setTop(new Label());
                                 //Grant 5/7 this is for clearing the tree it kind of works 
                                 displayedSubtree=buttons.indexOf(t)==7?0:buttons.indexOf(t)+3;
