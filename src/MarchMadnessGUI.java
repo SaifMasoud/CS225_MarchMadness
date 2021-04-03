@@ -1,3 +1,4 @@
+package debug.debug;
 //package marchmadness;
 
 import java.io.File;
@@ -10,11 +11,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
+import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -24,11 +27,16 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToolBar;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
+import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -43,7 +51,7 @@ import javafx.stage.Stage;
 public class MarchMadnessGUI extends Application {
     
     
-    //all the gui ellements
+    //all the gui elements
     private BorderPane root;
     private ToolBar toolBar;
     private ToolBar btoolBar;
@@ -54,6 +62,7 @@ public class MarchMadnessGUI extends Application {
     private Button clearButton;
     private Button resetButton;
     private Button finalizeButton;
+    private Button saveBtn = new Button("Save");
     
     //allows you to navigate back to division selection screen
     private Button back;
@@ -75,9 +84,11 @@ public class MarchMadnessGUI extends Application {
     private BracketPane bracketPane;
     private GridPane loginP;
     private TournamentInfo teamInfo;
+    StackPane stackPane;
     
     
-    @Override
+    @SuppressWarnings("static-access")
+	@Override
     public void start(Stage primaryStage) {
         //try to load all the files, if there is an error display it
         try{
@@ -87,33 +98,53 @@ public class MarchMadnessGUI extends Application {
         } catch (IOException ex) {
             showError(new Exception("Can't find "+ex.getMessage(),ex),true);
         }
-        //deserialize stored brackets
+       
+        
+        root = new BorderPane();//deserialize stored brackets
         playerBrackets = loadBrackets();
         
         playerMap = new HashMap<>();
         addAllToMap();
         
+        
 
 
         //the main layout container
-        root = new BorderPane();
+       
+        
+        
         scoreBoard= new ScoreBoardTable();
         table=scoreBoard.start();
         loginP=createLogin();
         CreateToolBars();
+       
         
         //display login screen
         login();
         
         setActions();
-        root.setTop(toolBar);   
+        root.setTop(toolBar); 
+        root.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, Insets.EMPTY)));
+        
         root.setBottom(btoolBar);
         Scene scene = new Scene(root);
-        primaryStage.setMaximized(true);
+       
+        
+
+        //logout button display ET
+        createLogOut();
 
         primaryStage.setTitle("March Madness Bracket Simulator");
         primaryStage.setScene(scene);
         primaryStage.show();
+
+    }
+    //Creates a logout button for user to exit game at any time. ET
+    private void createLogOut() {
+        Button logOut = new Button("logout");
+        btoolBar.getItems().add(logOut);
+        logOut.setOnAction( e -> login());
+
     }
 
     /**
@@ -122,6 +153,23 @@ public class MarchMadnessGUI extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+	/*
+	 * ///////////////////////////////////////////// //John is doing that
+	 * 
+	 * @SuppressWarnings({ "exports", "static-access" }) public void labels() {
+	 * 
+	 * Label label=new Label(); label.setText("boom"); label.setLayoutX(20);
+	 * label.setLayoutY(20); //this.setMaxSize(900, 900); stackPane = new
+	 * StackPane(); stackPane.getChildren().add(label);
+	 * stackPane.setStyle("-fx-background-color: orange;");
+	 * root.setAlignment(stackPane, Pos.TOP_CENTER); root.setTop(stackPane); }
+	 * //////////////////////////////////////////////////
+	 */    
+    
+    
+    
+    
+    
     
     
     
@@ -141,6 +189,7 @@ public class MarchMadnessGUI extends Application {
        teamInfo.simulate(simResultBracket);
        for(Bracket b:playerBrackets){
            scoreBoard.addPlayer(b,b.scoreBracket(simResultBracket));
+           
        }
         
         displayPane(table);
@@ -282,6 +331,7 @@ public class MarchMadnessGUI extends Application {
                 clearButton,
                 resetButton,
                 finalizeButton,
+                saveBtn,
                 back=new Button("Choose Division"),
                 createSpacer()
         );
@@ -301,6 +351,10 @@ public class MarchMadnessGUI extends Application {
         back.setOnAction(e->{
             bracketPane=new BracketPane(selectedBracket);
             displayPane(bracketPane);
+        });
+        // Saif Masoud: save users progress.
+        saveBtn.setOnAction(event -> {
+            seralizeBracket(selectedBracket);
         });
     }
     
@@ -334,7 +388,7 @@ public class MarchMadnessGUI extends Application {
         Text welcomeMessage = new Text("March Madness Login Welcome");
         loginPane.add(welcomeMessage, 0, 0, 2, 1);
 
-        Label userName = new Label("User Name: ");
+        Label userName = new Label("username: ");       //Edited username ET
         loginPane.add(userName, 0, 1);
 
         TextField enterUser = new TextField();
@@ -352,6 +406,13 @@ public class MarchMadnessGUI extends Application {
 
         Label message = new Label();
         loginPane.add(message, 1, 5);
+
+        // Saif Masoud: Add a drop-down for registered users
+        ObservableList<String> options =
+                FXCollections.observableArrayList(playerMap.keySet());
+        ComboBox usersDropDown = new ComboBox(options);
+        usersDropDown.setOnAction(event -> enterUser.setText((String) usersDropDown.getValue()));
+        loginPane.add(usersDropDown, 2, 1);
 
         signButton.setOnAction(event -> {
 
@@ -412,7 +473,7 @@ public class MarchMadnessGUI extends Application {
      * The Exception handler
      * Displays a error message to the user
      * and if the error is bad enough closes the program
-     * @param msg message to be displayed to the user
+     * msg message to be displayed to the user
      * @param fatal true if the program should exit. false otherwise 
      */
     private void showError(Exception e,boolean fatal){
@@ -507,7 +568,7 @@ public class MarchMadnessGUI extends Application {
       /**
      * Tayon Watson 5/5
      * deseralizedBracket
-     * @param filename of the seralized bracket file
+     * filename of the seralized bracket file
      * @return deserialized bracket 
      */
     private ArrayList<Bracket> loadBrackets()
