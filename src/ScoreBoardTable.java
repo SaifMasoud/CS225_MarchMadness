@@ -67,7 +67,7 @@ public class ScoreBoardTable {
          *                                   automatically sorted with the TableColumn.SortType.DESCENDING
          *                                   code line.
          */
-        TableColumn<Bracket, Number> totalPtsCol = new TableColumn<>("Total Pointsssss");
+        TableColumn<Bracket, Number> totalPtsCol = new TableColumn<>("Total Points");
         totalPtsCol.setEditable(true);
         totalPtsCol.setSortType(SortType.DESCENDING);
         totalPtsCol.setMinWidth(140);
@@ -87,13 +87,23 @@ public class ScoreBoardTable {
          * TableView table_view is what the user sees in the GUI. This creates the table.
          *
          */
-        
+        //Shane Callahan Additions
+        TableColumn<Bracket, String> correctCol = new TableColumn<>("Correct Teams");
+        //correctCol.setMinWidth(140);
+       // correctCol.setMaxWidth(140);
+        //correctCol.setStyle("-fx-border-width: 3px");
+        correctCol.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Bracket, String>, ObservableValue<String>>() {
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<Bracket, String> b) {
+                return new SimpleStringProperty(b.getValue().getCorrectTeams());
+            }
+        });
+        //END
         table.setItems(data);
         table.setEditable(false);
         
         //table.getSelectionModel().setCellSelectionEnabled(true
        
-        table.getColumns().setAll(userNameCol, totalPtsCol);
+        table.getColumns().setAll(userNameCol, totalPtsCol, correctCol);//except I did add correctCol to this
         
     }
 

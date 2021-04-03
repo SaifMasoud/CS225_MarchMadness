@@ -17,7 +17,9 @@ public class Bracket implements Serializable //Hillary: This bracket class is to
     static final int WEST_BRACKET = 4;
     static final int MIDWEST_BRACKET = 5;
     static final int SOUTH_BRACKET = 6;
+    private String correctTeams = "";//Shane's Addition
     public static final long serialVersionUID = 5609181678399742983L;
+   
 
     //Constructor
     /**
@@ -206,27 +208,39 @@ public class Bracket implements Serializable //Hillary: This bracket class is to
      */
     public int scoreBracket(Bracket master){
         int score = 0;
-        if (bracket.get(0).equals(master.getBracket().get(0)))//finals
+        if (bracket.get(0).equals(master.getBracket().get(0))){//finals
             score+=32;
+            addToCorrectTeams(bracket.get(0) + " the winner");//Shane Callahan's Additions (each one)
+            }
         for (int i = 1; i < 3; i++) {
-            if (bracket.get(i).equals(master.getBracket().get(i)))//semi
+            if (bracket.get(i).equals(master.getBracket().get(i))){//semi
                 score+=16;
+                addToCorrectTeams(bracket.get(i) + " final four");
+            }
         }
         for (int i = 3; i < 7; i++) {
-            if (bracket.get(i).equals(master.getBracket().get(i)))//quarters
+            if (bracket.get(i).equals(master.getBracket().get(i))){//quarters
                 score+=8;
+                addToCorrectTeams(bracket.get(i) + " sweet 16");
+            }
         }
         for (int i = 7; i < 15; i++) {
-            if (bracket.get(i).equals(master.getBracket().get(i)))//sweet 16
+            if (bracket.get(i).equals(master.getBracket().get(i))){//sweet 16
             score+=4;
+            addToCorrectTeams(bracket.get(i) + " round three");
+            }
         }
         for (int i = 15; i < 31; i++) {
-            if (bracket.get(i).equals(master.getBracket().get(i)))//round of 32
+            if (bracket.get(i).equals(master.getBracket().get(i))){//round of 32
             score+=2;
+            addToCorrectTeams(bracket.get(i) + " round two");
+            }
         }
         for (int i = 31; i < 63; i++) {
-            if (bracket.get(i).equals(master.getBracket().get(i)))//round of 64
+            if (bracket.get(i).equals(master.getBracket().get(i))){//round of 64
             score+=1;
+            addToCorrectTeams(bracket.get(i) + " round one");
+            }
         }
         return score;
     }
@@ -258,5 +272,15 @@ public class Bracket implements Serializable //Hillary: This bracket class is to
     public int getTeamScore(int index){
         return teamScores[index];
     }
+    //Shane Callahan's Additions
+
+    public String getCorrectTeams() {
+        return correctTeams;
+    }
+
+    public void addToCorrectTeams(String s){
+        correctTeams = this.getCorrectTeams() + s + ", ";
+    }
+    //END
 }
 
