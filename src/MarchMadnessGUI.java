@@ -135,6 +135,13 @@ public class MarchMadnessGUI extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
 
+        // ******************************************************************************************************
+
+        // added an instruction window to explain the use of the software "in a nutshell"                       Z.L.
+        new InstructionWindow("How to: Software Utilization");
+
+        // ******************************************************************************************************
+
     }
     //Creates a logout button for user to exit game at any time. ET
     private void createLogOut() {
@@ -176,6 +183,15 @@ public class MarchMadnessGUI extends Application {
      * after the simulation no more users can login
      */
     private void simulate(){
+
+        // ******************************************************************************************************
+
+        // allows the user to see their results so they may compare them with the simulated results.           Z.L.
+        new UserBracketViewer(bracketPane.getFullPane());
+
+        // ******************************************************************************************************
+  
+
         //cant login and restart prog after simulate
         login.setDisable(true);
         simulate.setDisable(true);
@@ -269,6 +285,26 @@ public class MarchMadnessGUI extends Application {
     
     private void finalizeBracket(){
        if(bracketPane.isComplete()){
+
+            // ******************************************************************************************************
+
+            // ensures only one reference, predecessor is subject to garbage collection.                         Z.L.
+            scoreBoard = new ScoreBoardTable();
+            // ensures only one reference, predecessor is subject to garbage collection.                         Z.L.
+            table = scoreBoard.start();
+
+            // allows a user to still make any more changes to finalize, even after clicking "finalize."         Z.L.
+            ObservableList<Node> bottomItems = btoolBar.getItems();
+            for(int i = 0; i < bottomItems.size(); i++) {
+                switch(i) {
+                    case 3: case 4:
+                        continue;
+                }
+                bottomItems.get(i).setDisable(true);
+            }
+
+            // ******************************************************************************************************
+
            btoolBar.setDisable(true);
            bracketPane.setDisable(true);
            simulate.setDisable(false);

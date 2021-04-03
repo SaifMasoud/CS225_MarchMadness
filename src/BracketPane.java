@@ -526,11 +526,20 @@ public class BracketPane extends StackPane {
                         this.teamName = teamName;
                         rect = new Rectangle(rX, rY);
                         name = new Label(teamName);
+                        rect.setFill(Color.TRANSPARENT);
 						
-                        	rect.setFill(Color.TRANSPARENT);
-						
-                        // setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
-                        name.setTranslateX(5);
+                        // ******************************************************************************************************
+
+                       /*                                        (Z.L.) ~ removed lines of code within BracketNode constructor.
+                                                                          The following two (2) statements or complete commands
+                                                                            have been removed to make the text alignment nicer.
+                                                          **********************************************************************
+                                                               statement 1 : setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
+                                                               statement 2 : name.setTranslateX(5);
+                       */
+
+                       // ******************************************************************************************************
+
                         getChildren().addAll( rect,name);
                 }
                 
