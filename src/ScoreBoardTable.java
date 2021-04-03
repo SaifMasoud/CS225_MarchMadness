@@ -1,21 +1,13 @@
-package debug.debug;
-
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableColumn.SortType;
 import javafx.scene.control.TableView;
 import javafx.util.Callback;
-
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-
- 
 
 /**
  * Created by Sarah on 5/2/17.
@@ -35,13 +27,11 @@ public class ScoreBoardTable {
 
     /**
      * ScoreBoardPane constructor
-     * @param <T>
      */
     @SuppressWarnings("unchecked")
-    public <T> ScoreBoardTable() {
+    public ScoreBoardTable() {
         table = new TableView<>();
         data = FXCollections.observableArrayList();
-        
         scores = new HashMap<>();
 
         /**
@@ -59,19 +49,16 @@ public class ScoreBoardTable {
                 return new SimpleStringProperty(b.getValue().getPlayerName());
             }
         });
-        userNameCol.setSortable(true);
-        
+        userNameCol.setSortable(false);
         //userNameCol.setSortType(TableColumn.SortType.DESCENDING); //sorts column from highest to lowest
-        //table.sort();
+
         /**
          * TableColumn totalPtsCol is the column on the right side of the table
          * totalPtsCol.setCellValueFactory() passes the data to the TableView object, which is
          *                                   automatically sorted with the TableColumn.SortType.DESCENDING
          *                                   code line.
          */
-        TableColumn<Bracket, Number> totalPtsCol = new TableColumn<>("Total Pointsssss");
-        totalPtsCol.setEditable(true);
-        totalPtsCol.setSortType(SortType.DESCENDING);
+        TableColumn<Bracket, Number> totalPtsCol = new TableColumn<>("Total Points");
         totalPtsCol.setMinWidth(140);
         totalPtsCol.setMaxWidth(140);
         totalPtsCol.setStyle("-fx-border-width: 3px");
@@ -81,9 +68,7 @@ public class ScoreBoardTable {
             }
         });
         totalPtsCol.setSortable(true);
-        table.getSortOrder().sorted();
-         
-        //totalPtsCol.setSortType(TableColumn.SortType.DESCENDING); //sorts column from highest to lowest
+        totalPtsCol.setSortType(TableColumn.SortType.ASCENDING); //sorts column from highest to lowest
 
         /**
          * TableView table_view is what the user sees in the GUI. This creates the table.
@@ -94,7 +79,7 @@ public class ScoreBoardTable {
         table.setEditable(false);
         
         //table.getSelectionModel().setCellSelectionEnabled(true
-       
+        table.sort();
         table.getColumns().setAll(userNameCol, totalPtsCol);
         
     }
@@ -105,8 +90,7 @@ public class ScoreBoardTable {
     }
 
     //Ying's code, method addPlayer adds a player to the Bracket
-    
-	public void addPlayer(Bracket name, int score) {
+    public void addPlayer(Bracket name, int score) {
         try {
             if (scores == null) {
                 scores = new HashMap<Bracket, Integer>();
@@ -114,10 +98,9 @@ public class ScoreBoardTable {
             //only allow to update the existing player score or add new player if there
             //is less than 16 players
             if (scores.get(name) != null || scores.size() < MAX_PLAYER_NUMBER) {
-            	
-            	scores.put(name, score);
- 		                data.add(name);
-			     
+                scores.put(name, score);
+                data.add(name);
+                //System.out.println("added: " + name.getPlayerName() + " " + score);
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
