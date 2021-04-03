@@ -1,3 +1,4 @@
+package debug.debug;
 //package marchmadness;
 
 import java.io.File;
@@ -18,11 +19,24 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ToolBar;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
+import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -70,9 +84,11 @@ public class MarchMadnessGUI extends Application {
     private BracketPane bracketPane;
     private GridPane loginP;
     private TournamentInfo teamInfo;
+    StackPane stackPane;
     
     
-    @Override
+    @SuppressWarnings("static-access")
+	@Override
     public void start(Stage primaryStage) {
         //try to load all the files, if there is an error display it
         try{
@@ -82,29 +98,38 @@ public class MarchMadnessGUI extends Application {
         } catch (IOException ex) {
             showError(new Exception("Can't find "+ex.getMessage(),ex),true);
         }
-        //deserialize stored brackets
+       
+        
+        root = new BorderPane();//deserialize stored brackets
         playerBrackets = loadBrackets();
         
         playerMap = new HashMap<>();
         addAllToMap();
         
+        
 
 
         //the main layout container
-        root = new BorderPane();
+       
+        
+        
         scoreBoard= new ScoreBoardTable();
         table=scoreBoard.start();
         loginP=createLogin();
         CreateToolBars();
+       
         
         //display login screen
         login();
         
         setActions();
-        root.setTop(toolBar);   
+        root.setTop(toolBar); 
+        root.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, Insets.EMPTY)));
+        
         root.setBottom(btoolBar);
         Scene scene = new Scene(root);
-        primaryStage.setMaximized(true);
+       
+        
 
         //logout button display ET
         createLogOut();
@@ -128,6 +153,23 @@ public class MarchMadnessGUI extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+	/*
+	 * ///////////////////////////////////////////// //John is doing that
+	 * 
+	 * @SuppressWarnings({ "exports", "static-access" }) public void labels() {
+	 * 
+	 * Label label=new Label(); label.setText("boom"); label.setLayoutX(20);
+	 * label.setLayoutY(20); //this.setMaxSize(900, 900); stackPane = new
+	 * StackPane(); stackPane.getChildren().add(label);
+	 * stackPane.setStyle("-fx-background-color: orange;");
+	 * root.setAlignment(stackPane, Pos.TOP_CENTER); root.setTop(stackPane); }
+	 * //////////////////////////////////////////////////
+	 */    
+    
+    
+    
+    
+    
     
     
     
@@ -147,6 +189,7 @@ public class MarchMadnessGUI extends Application {
        teamInfo.simulate(simResultBracket);
        for(Bracket b:playerBrackets){
            scoreBoard.addPlayer(b,b.scoreBracket(simResultBracket));
+           
        }
         
         displayPane(table);
