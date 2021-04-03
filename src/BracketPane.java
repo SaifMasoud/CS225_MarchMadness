@@ -24,6 +24,7 @@ import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -240,45 +241,37 @@ public class BracketPane extends StackPane {
                 buttonGrid.setAlignment(Pos.CENTER);
 
                 // set default center to the button grid
+                
+
                 //Shane Callahan Start Editions
-                Image imageLeft;
+                Image imageTop;
                 Image imageRight;
-                ImageView imageViewLeft = new ImageView();
+                ImageView imageViewTop = new ImageView();
                 ImageView imageViewRight = new ImageView();
                 try {
-                        FileInputStream inputstreamLeft = new FileInputStream("March_Madness_Logo_Test1.png"); 
+                        FileInputStream inputStreamTop = new FileInputStream("March_Madness_Logo_Test1.png"); 
                         FileInputStream inputstreamRight = new FileInputStream("Basketball_Logo_1.png"); 
-                        imageLeft = new Image(inputstreamLeft);
+                        imageTop = new Image(inputStreamTop);
                         imageRight = new Image(inputstreamRight);
-                        imageViewLeft = new ImageView(imageLeft);
+                        imageViewTop = new ImageView(imageTop);
                         imageViewRight = new ImageView(imageRight);
                     } catch (Exception e) {
                         //imageRight = new Image("githubLink");
                         System.out.println("For later");
                     }
-                    GridPane leftCenteredPane = new GridPane();
-                    leftCenteredPane.setAlignment(Pos.TOP_CENTER);
-                    leftCenteredPane.add(imageViewLeft, 0, 0);
-                        //leftCenteredPane.setGridLinesVisible(true);
-                    this.getChildren().addAll(leftCenteredPane);
+                    GridPane topCenteredPane = new GridPane();
+                    topCenteredPane.setAlignment(Pos.TOP_CENTER);
+                    topCenteredPane.add(imageViewTop, 0, 0);
+                    this.getChildren().add(topCenteredPane);
 
                     GridPane rightCenteredPane = new GridPane();
                     rightCenteredPane.setAlignment(Pos.CENTER_RIGHT);
                     rightCenteredPane.add(imageViewRight, 0, 0);
-                        //rightCenteredPane.setGridLinesVisible(true);
-                    this.getChildren().addAll(rightCenteredPane);
-
-                    
-                    //this.getLeft().setScaleX(.5);
-                    //this.getLeft().setScaleY(.5);
-                    //this.getLeft().setAlignment();
+                    this.getChildren().add(rightCenteredPane);
+                    this.getChildren().add(buttonGrid);
                 
-                    
+                    //end editions
 
-                this.getChildren().addAll(buttonGrid);
-
-                //end editions
-                
                 for (StackPane t : buttons) {
                         t.setOnMouseEntered(mouseEvent -> {
                                 t.setStyle("-fx-background-color: lightblue;");
@@ -289,7 +282,7 @@ public class BracketPane extends StackPane {
                                 t.setEffect(null);
                         });
                         t.setOnMouseClicked(mouseEvent -> {
-                                //setCenter(null);
+                                //add(null,0,1);
                                 /**
                                  * @update Grant & Tyler 
                                  * 			panes are added as ScrollPanes to retain center alignment when moving through full-view and region-view
@@ -299,7 +292,7 @@ public class BracketPane extends StackPane {
                                 this.getChildren().addAll(center);
                                 this.getChildren().get(1).setVisible(false);
                                 this.getChildren().get(2).setVisible(false);
-                                //setTop(new Label());
+
                                 //Grant 5/7 this is for clearing the tree it kind of works 
                                 displayedSubtree=buttons.indexOf(t)==7?0:buttons.indexOf(t)+3;
                         });
