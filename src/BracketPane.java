@@ -88,13 +88,7 @@ public class BracketPane extends BorderPane {
         
         
         public void clear(){
-                if(displayedSubtree == 7){
-                        clearSubtree(0);
-                }
-                else
-                clearSubtree(displayedSubtree);
-            
-            
+            clearSubtree(displayedSubtree);
         }
 
         /**
@@ -248,25 +242,25 @@ public class BracketPane extends BorderPane {
                 this.setCenter(buttonGrid);
 
                 //Shane Callahan Start Editions
-                Image imageTop;
+                Image imageLeft;
                 Image imageRight;
                 ImageView imageViewLeft = new ImageView();
                 ImageView imageViewRight = new ImageView();
                 try {
-                        FileInputStream inputStreamTop = new FileInputStream("March_Madness_Logo_Test1.png"); 
+                        FileInputStream inputstreamLeft = new FileInputStream("March_Madness_Logo_Test1.png"); 
                         FileInputStream inputstreamRight = new FileInputStream("Basketball_Logo_1.png"); 
-                        imageTop = new Image(inputStreamTop);
+                        imageLeft = new Image(inputstreamLeft);
                         imageRight = new Image(inputstreamRight);
-                        imageViewLeft = new ImageView(imageTop);
+                        imageViewLeft = new ImageView(imageLeft);
                         imageViewRight = new ImageView(imageRight);
                     } catch (Exception e) {
                         //imageRight = new Image("githubLink");
                         System.out.println("For later");
                     }
-                    GridPane topCenteredPane = new GridPane();
-                    topCenteredPane.setAlignment(Pos.TOP_CENTER);
-                    topCenteredPane.add(imageViewLeft, 0, 0);
-                    this.setTop(topCenteredPane);
+                    GridPane leftCenteredPane = new GridPane();
+                    leftCenteredPane.setAlignment(Pos.TOP_CENTER);
+                    leftCenteredPane.add(imageViewLeft, 0, 0);
+                    this.setTop(leftCenteredPane);
                     //setAlignment(Pos.TOP_CENTER);
 
                     GridPane rightCenteredPane = new GridPane();
@@ -303,7 +297,6 @@ public class BracketPane extends BorderPane {
                                 setCenter(center);
                                 getTop().setVisible(false);
                                 //setTop(new Label());
-                                
 
                                 //Grant 5/7 this is for clearing the tree it kind of works 
                                 displayedSubtree=buttons.indexOf(t)==7?0:buttons.indexOf(t)+3;
