@@ -260,14 +260,14 @@ public class BracketPane extends BorderPane {
                     GridPane leftCenteredPane = new GridPane();
                     leftCenteredPane.setAlignment(Pos.TOP_CENTER);
                     leftCenteredPane.add(imageViewLeft, 0, 0);
-                        leftCenteredPane.setGridLinesVisible(true);
                     this.setTop(leftCenteredPane);
                     //setAlignment(Pos.TOP_CENTER);
 
                     GridPane rightCenteredPane = new GridPane();
                     rightCenteredPane.setAlignment(Pos.CENTER);
                     rightCenteredPane.add(imageViewRight, 0, 0);
-                        rightCenteredPane.setGridLinesVisible(true);
+                    //this.setRight(rightCenteredPane); HAD TO GET SCRAPPED DUE TO BORDERPANE
+                    
                     //this.setRight(rightCenteredPane);
 
                     
@@ -295,6 +295,7 @@ public class BracketPane extends BorderPane {
                                 center.add(new ScrollPane(panes.get(t)), 0, 0);
                                 center.setAlignment(Pos.CENTER);
                                 setCenter(center);
+                                getTop().setVisible(false);
                                 //setTop(new Label());
 
                                 //Grant 5/7 this is for clearing the tree it kind of works 
