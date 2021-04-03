@@ -6,7 +6,7 @@
  *       
  */
 
-public class Team{
+public class Team{   //team
 
   private String name;
   private String nickname;
