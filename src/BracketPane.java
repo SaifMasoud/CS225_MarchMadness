@@ -88,7 +88,14 @@ public class BracketPane extends StackPane {
         
         
         public void clear(){
-            clearSubtree(displayedSubtree);
+                //Shane Callahan addition
+                //whenever displayedSubTree = 7, it is the full bracket. so clear the full bracket but the special case of making root = 0
+            if(displayedSubtree == 7){
+                clearSubtree(0);
+            }
+            else
+                clearSubtree(displayedSubtree);
+                //ends
         }
 
         /**

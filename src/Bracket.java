@@ -90,8 +90,8 @@ public class Bracket implements Serializable //Hillary: This bracket class is to
      * @param root, everything below and including this is reset
      */
     public void resetSubtree(int root){
-        if (root ==0){//special behavior to reset final 4
-            for (int i = 0; i < 7; i++) {
+        if (root ==0){//NEW special behavior, when root = 0, clears the whole bracket. Root can only be 0, when displayed subtree = 7
+            for (int i = 0; i < 63; i++) {
                 bracket.set(i,"");
             }
         }
