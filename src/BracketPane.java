@@ -35,7 +35,7 @@ import javafx.scene.layout.Region;
 /**
  * Created by Richard and Ricardo on 5/3/17.
  */
-public class BracketPane extends BorderPane {
+public class BracketPane extends StackPane {
 
         /**
          * Reference to the graphical representation of the nodes within the bracket.
@@ -88,7 +88,14 @@ public class BracketPane extends BorderPane {
         
         
         public void clear(){
-            clearSubtree(displayedSubtree);
+                //Shane Callahan addition
+                //whenever displayedSubTree = 7, it is the full bracket. so clear the full bracket but the special case of making root = 0
+            if(displayedSubtree == 7){
+                clearSubtree(0);
+            }
+            else
+                clearSubtree(displayedSubtree);
+                //ends
         }
 
         /**
@@ -183,6 +190,7 @@ public class BracketPane extends BorderPane {
                 buttons.add(customButton("MIDWEST"));
                 buttons.add(customButton("SOUTH"));
                 buttons.add(customButton("FULL"));
+                
 
                 ArrayList<GridPane> gridPanes = new ArrayList<>();
 
@@ -197,7 +205,8 @@ public class BracketPane extends BorderPane {
                 //fullPane.setStyle("-fx-background-color: black");
                 fullPane.setMaxHeight(1600);
                 
-                this.setCenter(labelstry());
+                this.getChildren().add(labelstry());
+                this.getChildren().get(0).setVisible(false);
                 
                 /////////////////////////////////////////
              
@@ -239,41 +248,34 @@ public class BracketPane extends BorderPane {
                 buttonGrid.setAlignment(Pos.CENTER);
 
                 // set default center to the button grid
-                this.setCenter(buttonGrid);
+                
 
                 //Shane Callahan Start Editions
-                Image imageLeft;
+                Image imageTop;
                 Image imageRight;
-                ImageView imageViewLeft = new ImageView();
+                ImageView imageViewTop = new ImageView();
                 ImageView imageViewRight = new ImageView();
                 try {
-                        FileInputStream inputstreamLeft = new FileInputStream("March_Madness_Logo_Test1.png"); 
+                        FileInputStream inputStreamTop = new FileInputStream("March_Madness_Logo_Test1.png"); 
                         FileInputStream inputstreamRight = new FileInputStream("Basketball_Logo_1.png"); 
-                        imageLeft = new Image(inputstreamLeft);
+                        imageTop = new Image(inputStreamTop);
                         imageRight = new Image(inputstreamRight);
-                        imageViewLeft = new ImageView(imageLeft);
+                        imageViewTop = new ImageView(imageTop);
                         imageViewRight = new ImageView(imageRight);
                     } catch (Exception e) {
                         //imageRight = new Image("githubLink");
                         System.out.println("For later");
                     }
-                    GridPane leftCenteredPane = new GridPane();
-                    leftCenteredPane.setAlignment(Pos.TOP_CENTER);
-                    leftCenteredPane.add(imageViewLeft, 0, 0);
-                    this.setTop(leftCenteredPane);
-                    //setAlignment(Pos.TOP_CENTER);
+                    GridPane topCenteredPane = new GridPane();
+                    topCenteredPane.setAlignment(Pos.TOP_CENTER);
+                    topCenteredPane.add(imageViewTop, 0, 0);
+                    this.getChildren().add(topCenteredPane);
 
                     GridPane rightCenteredPane = new GridPane();
-                    rightCenteredPane.setAlignment(Pos.CENTER);
+                    rightCenteredPane.setAlignment(Pos.CENTER_RIGHT);
                     rightCenteredPane.add(imageViewRight, 0, 0);
-                    //this.setRight(rightCenteredPane); HAD TO GET SCRAPPED DUE TO BORDERPANE
-                    
-                    //this.setRight(rightCenteredPane);
-
-                    
-                    //this.getLeft().setScaleX(.5);
-                    //this.getLeft().setScaleY(.5);
-                    //this.getLeft().setAlignment();
+                    this.getChildren().add(rightCenteredPane);
+                    this.getChildren().add(buttonGrid);
                 
                     //end editions
 
@@ -294,9 +296,9 @@ public class BracketPane extends BorderPane {
                                  */
                                 center.add(new ScrollPane(panes.get(t)), 0, 0);
                                 center.setAlignment(Pos.CENTER);
-                                setCenter(center);
-                                getTop().setVisible(false);
-                                //setTop(new Label());
+                                this.getChildren().addAll(center);
+                                this.getChildren().get(1).setVisible(false);
+                                this.getChildren().get(2).setVisible(false);
 
                                 //Grant 5/7 this is for clearing the tree it kind of works 
                                 displayedSubtree=buttons.indexOf(t)==7?0:buttons.indexOf(t)+3;
@@ -582,9 +584,7 @@ public class BracketPane extends BorderPane {
 				lab.setStyle("-fx-background-color: red;");
 				pane.setMargin(lab , sert);
         		pane.getChildren().addAll(lab);
-        		
 			}
-			System.out.println(pane.getWidth());
         	return pane;
         }
 		
