@@ -172,12 +172,17 @@ public class MarchMadnessGUI extends Application {
       * 
       */
     private void viewBracket(){
-       selectedBracket=simResultBracket;
-       bracketPane=new BracketPane(selectedBracket);
-       GridPane full = bracketPane.getFullPane();
-       full.setAlignment(Pos.CENTER);
+       selectedBracket = simResultBracket;
+       bracketPane = new BracketPane(selectedBracket);
+       GridPane full = new GridPane();
+       full.add(bracketPane.getFullPane(),0,0);
        full.setDisable(true);
-       displayPane(new ScrollPane(full)); 
+       ScrollPane scrollPane = new ScrollPane(full);
+       //Shane Callahan, small fix, just added ScrollPane to GridPane to make it centered.
+       GridPane centerPane = new GridPane();
+       centerPane.add(scrollPane, 0, 0);
+       centerPane.setAlignment(Pos.CENTER);
+       displayPane(centerPane); 
     }
     
     /**
