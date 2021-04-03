@@ -167,7 +167,6 @@ public class BracketPane extends StackPane {
         private GridPane center;
         private GridPane fullPane;
 
-
         /**
          * TODO: Reduce. reuse, recycle!
          * Initializes the properties needed to construct a bracket.

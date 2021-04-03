@@ -385,7 +385,7 @@ public class MarchMadnessGUI extends Application {
         Text welcomeMessage = new Text("March Madness Login Welcome");
         loginPane.add(welcomeMessage, 0, 0, 2, 1);
 
-        Label userName = new Label("username: ");       //Edited username ET
+        Label userName = new Label("Username: ");       //Edited username ET
         loginPane.add(userName, 0, 1);
 
         TextField enterUser = new TextField();
