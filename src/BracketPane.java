@@ -206,7 +206,7 @@ public class BracketPane extends StackPane {
                 //fullPane.setStyle("-fx-background-color: black");
                 fullPane.setMaxHeight(1600);
                 
-                this.getChildren().add(labelstry());
+                this.getChildren().add(roundLabels());
                 this.getChildren().get(0).setVisible(false);
                 
                 /////////////////////////////////////////
@@ -225,9 +225,9 @@ public class BracketPane extends StackPane {
                 //gp2.setStyle("-fx-background-color: green;");
                 ///////////////////////////////////////////
                  //fullPane.setStyle("-fx-background-color: yellow;");
-                panegrid.getChildren().add(labelstry());
-                panegrid.getChildren().add(labelstry1());
-                panegrid.getChildren().add(labelstry3());
+                panegrid.getChildren().add(roundLabels());
+                panegrid.getChildren().add(roundLabels2());
+                panegrid.getChildren().add(roundLabels3());
                 //panegrid.add(labelstry(), 2, 0);
  				////////////////////////////////////////////////////////////
                 fullPane.add(gp1, 0, 0);
@@ -585,6 +585,7 @@ public class BracketPane extends StackPane {
 		public HBox roundLabels() {
 			HBox pane=new HBox();
 			 pane.setStyle("-fx-background-color: yellow;");
+                         pane.setSpacing(20);
 			Insets sert=new Insets(0 , 0, 0,45);
 			String[] label= {"Round 1","Round 2","Sweet 16","Elite 8","Final Four"};
 			for (int i = 0; i < label.length; i++) {
@@ -621,9 +622,10 @@ public class BracketPane extends StackPane {
 		@SuppressWarnings({ "exports", "static-access" })
 		public HBox roundLabels3() {
 			HBox pane=new HBox();
+                        pane.setSpacing(20);
 			pane.setAlignment(Pos.BASELINE_RIGHT);
 			 pane.setStyle("-fx-background-color: yellow;");
-			Insets sert=new Insets(0 , 0, 0,40);
+			Insets sert=new Insets(0 , 0, 0,45);
 			String[] label= {"Final Four","Elite 8","Sweet 16","Round 2","Round 1"};
 			for (int i = 0; i < label.length; i++) {
 				Label lab=new Label(label[i]);

@@ -82,7 +82,7 @@ public class ScoreBoardTable {
         totalPtsCol.setSortable(true);
         table.getSortOrder().sorted();
          
-       
+        /*
          * TableView table_view is what the user sees in the GUI. This creates the table.
          *
          */
@@ -106,7 +106,7 @@ public class ScoreBoardTable {
         table.getSortOrder().add(totalPtsCol);
         table.setEditable(false);
         table.getColumns().setAll(userNameCol, totalPtsCol);
-        /**
+        
         //End
     }
 
