@@ -56,6 +56,7 @@ public class MarchMadnessGUI extends Application {
     private Button login;
     private Button scoreBoardButton;
     private Button viewBracketButton;
+    private Button resetSimulationButt;
     private Button clearButton;
     private Button resetButton;
     private Button finalizeButton;
@@ -198,6 +199,7 @@ public class MarchMadnessGUI extends Application {
         
        scoreBoardButton.setDisable(false);
        viewBracketButton.setDisable(false);
+       resetSimulationButt.setDisable(false);
        
        teamInfo.simulate(simResultBracket);
        for(Bracket b:playerBrackets){
@@ -218,6 +220,7 @@ public class MarchMadnessGUI extends Application {
         scoreBoardButton.setDisable(true);
         viewBracketButton.setDisable(true);
         btoolBar.setDisable(true);
+        resetSimulationButt.setDisable(true);
         displayPane(loginP);
     }
     
@@ -245,6 +248,19 @@ public class MarchMadnessGUI extends Application {
        centerPane.add(scrollPane, 0, 0);
        centerPane.setAlignment(Pos.CENTER);
        displayPane(centerPane); 
+    }
+    
+    private void resetSimulation(){
+
+        if(confirmSimReset()) {
+            scoreBoard= new ScoreBoardTable();
+            table=scoreBoard.start();
+            for(Bracket b:playerBrackets){
+                playerMap.put(b.getPlayerName(), startingBracket);
+            }
+            login();
+        }
+
     }
     
     /**
@@ -309,6 +325,7 @@ public class MarchMadnessGUI extends Application {
            bracketPane.setDisable(true);
            simulate.setDisable(false);
            login.setDisable(false);
+           resetSimulationButt.setDisable(true);
            //save the bracket along with account info
            seralizeBracket(selectedBracket);
             
@@ -348,6 +365,7 @@ public class MarchMadnessGUI extends Application {
         simulate=new Button("Simulate");
         scoreBoardButton=new Button("ScoreBoard");
         viewBracketButton= new Button("View Simulated Bracket");
+        resetSimulationButt = new Button("Reset Simulation");
         clearButton=new Button("Clear");
         resetButton=new Button("Reset");
         finalizeButton=new Button("Finalize");
@@ -357,6 +375,7 @@ public class MarchMadnessGUI extends Application {
                 simulate,
                 scoreBoardButton,
                 viewBracketButton,
+                resetSimulationButt,
                 createSpacer()
         );
         btoolBar.getItems().addAll(
@@ -378,6 +397,7 @@ public class MarchMadnessGUI extends Application {
         simulate.setOnAction(e->simulate());
         scoreBoardButton.setOnAction(e->scoreBoard());
         viewBracketButton.setOnAction(e->viewBracket());
+        resetSimulationButt.setOnAction(e->resetSimulation());
         clearButton.setOnAction(e->clear());
         resetButton.setOnAction(e->reset());
         finalizeButton.setOnAction(e->finalizeBracket());
@@ -418,10 +438,10 @@ public class MarchMadnessGUI extends Application {
         loginPane.setVgap(10);
         loginPane.setPadding(new Insets(5, 5, 5, 5));
 
-        Text welcomeMessage = new Text("March Madness Login Welcome");
+        Text welcomeMessage = new Text("March Madness Login");
         loginPane.add(welcomeMessage, 0, 0, 2, 1);
 
-        Label userName = new Label("username: ");       //Edited username ET
+        Label userName = new Label("Username: ");       //Edited username ET
         loginPane.add(userName, 0, 1);
 
         TextField enterUser = new TextField();
@@ -546,6 +566,16 @@ public class MarchMadnessGUI extends Application {
     private boolean confirmReset(){
         Alert alert = new Alert(AlertType.CONFIRMATION, 
                 "Are you sure you want to reset the ENTIRE bracket?", 
+                ButtonType.YES,  ButtonType.CANCEL);
+        alert.setTitle("March Madness Bracket Simulator");
+        alert.setHeaderText(null);
+        alert.showAndWait();
+        return alert.getResult()==ButtonType.YES;
+    }
+    
+    private boolean confirmSimReset(){
+        Alert alert = new Alert(AlertType.CONFIRMATION,
+                "Are you sure you want to reset the simulation?",
                 ButtonType.YES,  ButtonType.CANCEL);
         alert.setTitle("March Madness Bracket Simulator");
         alert.setHeaderText(null);
