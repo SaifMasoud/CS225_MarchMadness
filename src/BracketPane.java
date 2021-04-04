@@ -365,7 +365,7 @@ public class BracketPane extends StackPane {
                 if (!currentBracket.isComplete()) {
 
                         for (BracketNode n : nodes) {
-                                if (n.getName() == "") {
+                                if (n.getName().compareTo("") == 0) {
                                         n.setRect(Color.LIGHTPINK);
                                 }
                         }
