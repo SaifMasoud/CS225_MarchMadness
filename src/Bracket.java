@@ -210,36 +210,36 @@ public class Bracket implements Serializable //Hillary: This bracket class is to
         int score = 0;
         if (bracket.get(0).equals(master.getBracket().get(0))){//finals
             score+=32;
-            addToCorrectTeams(bracket.get(0) + " the winner");//Shane Callahan's Additions (each one)
+            addToCorrectTeams(bracket.get(0) + " the Champion");//Shane Callahan's Additions (each one)
             }
         for (int i = 1; i < 3; i++) {
             if (bracket.get(i).equals(master.getBracket().get(i))){//semi
                 score+=16;
-                addToCorrectTeams(bracket.get(i) + " final four");
+                addToCorrectTeams(bracket.get(i) + " Final Four");
             }
         }
         for (int i = 3; i < 7; i++) {
             if (bracket.get(i).equals(master.getBracket().get(i))){//quarters
                 score+=8;
-                addToCorrectTeams(bracket.get(i) + " sweet 16");
+                addToCorrectTeams(bracket.get(i) + " Elite 8");
             }
         }
         for (int i = 7; i < 15; i++) {
             if (bracket.get(i).equals(master.getBracket().get(i))){//sweet 16
             score+=4;
-            addToCorrectTeams(bracket.get(i) + " round three");
+            addToCorrectTeams(bracket.get(i) + " Wweet 16");
             }
         }
         for (int i = 15; i < 31; i++) {
             if (bracket.get(i).equals(master.getBracket().get(i))){//round of 32
             score+=2;
-            addToCorrectTeams(bracket.get(i) + " round two");
+            addToCorrectTeams(bracket.get(i) + " Round 2");
             }
         }
         for (int i = 31; i < 63; i++) {
             if (bracket.get(i).equals(master.getBracket().get(i))){//round of 64
             score+=1;
-            addToCorrectTeams(bracket.get(i) + " round one");
+            addToCorrectTeams(bracket.get(i) + " Round 1");
             }
         }
         return score;
