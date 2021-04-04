@@ -49,8 +49,9 @@ public class BracketPane extends StackPane {
          * Maps the text "buttons" to it's respective grid-pane
          */
         private HashMap<StackPane, Pane> panes;
-        VBox vBox=new VBox();
-        HBox panegrid=new HBox();
+	
+        private VBox vBox=new VBox(); ////written by JOHN E Youte
+        private HBox panegrid=new HBox();  ////written by JOHN E Youte
         /**
          * Reference to the current bracket.
          */
@@ -579,35 +580,36 @@ public class BracketPane extends StackPane {
                    
         }
         
-        //John is doing that
-        
+       //written by JOHN E Youte
 		@SuppressWarnings({ "exports", "static-access" })
-		public HBox labelstry() {
+		public HBox roundLabels() {
 			HBox pane=new HBox();
-			 pane.setStyle("-fx-background-color: red;");
+			 pane.setStyle("-fx-background-color: yellow;");
 			Insets sert=new Insets(0 , 0, 0,45);
-			String[] label= {"(Round 1) ","(Round 2 )","(Round 3 )","( Round 4 )","( Round 5 )"};
+			String[] label= {"Round 1","Round 2","Sweet 16","Elite 8","Final Four"};
 			for (int i = 0; i < label.length; i++) {
 				Label lab=new Label(label[i]);
 				lab.setTextFill(Color.WHITE);
 				lab.setStyle("-fx-background-color: red;");
 				pane.setMargin(lab , sert);
         		pane.getChildren().addAll(lab);
+        		
 			}
+			
         	return pane;
         }
 		
 		
-		
+		//written by JOHN E Youte
 		@SuppressWarnings({ "exports", "static-access" })
-		public HBox labelstry1() {
+		public HBox roundLabels2() {
 			HBox pane=new HBox();
 			pane.setPrefWidth(600);
 			pane.setAlignment(Pos.CENTER);
 			//pane.setSpacing(40);
-			pane.setStyle("-fx-background-color: blue;");
+			pane.setStyle("-fx-background-color: green;");
 			Insets sert=new Insets(0 , 0, 0,45);
-			Label lab=new Label(" FINAL GAME 🏆 ");
+			Label lab=new Label("Championship 🏆");
 				lab.setTextFill(Color.WHITE);
 				//lab.setStyle("-fx-background-color: red;");
 				pane.setMargin(lab , sert);
@@ -615,13 +617,14 @@ public class BracketPane extends StackPane {
 			 return pane;
         }
 		
+		//written by JOHN E Youte
 		@SuppressWarnings({ "exports", "static-access" })
-		public HBox labelstry3() {
+		public HBox roundLabels3() {
 			HBox pane=new HBox();
 			pane.setAlignment(Pos.BASELINE_RIGHT);
-			 pane.setStyle("-fx-background-color: red;");
+			 pane.setStyle("-fx-background-color: yellow;");
 			Insets sert=new Insets(0 , 0, 0,40);
-			String[] label= {"(Round 5) ","(Round 4 )","(Round 3 )","( Round 2 )","( Round 1 )"};
+			String[] label= {"Final Four","Elite 8","Sweet 16","Round 2","Round 1"};
 			for (int i = 0; i < label.length; i++) {
 				Label lab=new Label(label[i]);
 				lab.setTextFill(Color.WHITE);
@@ -631,7 +634,6 @@ public class BracketPane extends StackPane {
         	 }
         	return pane;
         }
-		
 		
 		
 		

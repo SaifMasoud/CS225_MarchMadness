@@ -12,6 +12,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javafx.collections.transformation.SortedList;
 
  
 
@@ -81,9 +82,7 @@ public class ScoreBoardTable {
         totalPtsCol.setSortable(true);
         table.getSortOrder().sorted();
          
-        //totalPtsCol.setSortType(TableColumn.SortType.DESCENDING); //sorts column from highest to lowest
-
-        /**
+       
          * TableView table_view is what the user sees in the GUI. This creates the table.
          *
          */
@@ -98,13 +97,17 @@ public class ScoreBoardTable {
             }
         });
         //END
-        table.setItems(data);
+
+	
+         //writen by JOHN
+	 SortedList<Bracket> sortedData = new SortedList<>(data);
+        sortedData.comparatorProperty().bind(table.comparatorProperty());
+        table.setItems(sortedData);
+        table.getSortOrder().add(totalPtsCol);
         table.setEditable(false);
-        
-        //table.getSelectionModel().setCellSelectionEnabled(true
-       
-        table.getColumns().setAll(userNameCol, totalPtsCol, correctCol);//except I did add correctCol to this
-        
+        table.getColumns().setAll(userNameCol, totalPtsCol);
+        /**
+        //End
     }
 
     public TableView<Bracket> start() {
