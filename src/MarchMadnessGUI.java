@@ -318,7 +318,7 @@ public class MarchMadnessGUI extends Application {
             ObservableList<Node> bottomItems = btoolBar.getItems();
             for(int i = 0; i < bottomItems.size(); i++) {
                 switch(i) {
-                    case 3: case 4:
+                    case 3: case 5:
                         continue;
                 }
                 bottomItems.get(i).setDisable(true);
@@ -326,7 +326,7 @@ public class MarchMadnessGUI extends Application {
 
             // ******************************************************************************************************
 
-           btoolBar.setDisable(true);
+           
            bracketPane.setDisable(true);
            simulate.setDisable(false);
            login.setDisable(false);
