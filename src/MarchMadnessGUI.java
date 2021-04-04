@@ -255,9 +255,6 @@ public class MarchMadnessGUI extends Application {
         if(confirmSimReset()) {
             scoreBoard= new ScoreBoardTable();
             table=scoreBoard.start();
-            for(Bracket b:playerBrackets){
-                playerMap.put(b.getPlayerName(), startingBracket);
-            }
             login();
         }
 
