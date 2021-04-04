@@ -263,8 +263,8 @@ public class BracketPane extends StackPane {
                         imageViewTop = new ImageView(imageTop);
                         imageViewRight = new ImageView(imageRight);
                     } catch (Exception e) {
-                        //imageRight = new Image("githubLink");
-                        System.out.println("For later");
+                        imageTop = new Image("https://github.com/madelesi/CS225_MarchMadness/blob/main/March_Madness_Logo_Test1.png?raw=true");
+                        imageRight = new Image("https://github.com/madelesi/CS225_MarchMadness/blob/main/Basketball_Logo_1.png?raw=true");
                     }
                     GridPane topCenteredPane = new GridPane();
                     topCenteredPane.setAlignment(Pos.TOP_CENTER);
