@@ -88,6 +88,9 @@ public class MarchMadnessGUI extends Application {
     @SuppressWarnings("static-access")
 	@Override
     public void start(Stage primaryStage) {
+        
+        primaryStage.setOnCloseRequest(e->System.exit(0));
+        
         //try to load all the files, if there is an error display it
         try{
             teamInfo=new TournamentInfo();
@@ -250,6 +253,11 @@ public class MarchMadnessGUI extends Application {
        displayPane(centerPane); 
     }
     
+    /**
+     * Method that is called when the Reset Simulation button is pressed
+     * It will reset the scores of the simulation and bring the user back to login
+     * @author Michael Skuncik
+     */
     private void resetSimulation(){
 
         if(confirmSimReset()) {
@@ -500,7 +508,7 @@ public class MarchMadnessGUI extends Application {
                     playerMap.put(name, tmpPlayerBracket);
                     selectedBracket = tmpPlayerBracket;
                     //alert user that an account has been created
-                    infoAlert("No user with the Username \""  + name + "\" exists. A new account has been created.");
+                    infoAlert("No user with the username \""  + name + "\" exists. A new account has been created.");
                     chooseBracket();
                 }
             }
@@ -570,6 +578,12 @@ public class MarchMadnessGUI extends Application {
         return alert.getResult()==ButtonType.YES;
     }
     
+    /**
+     * Creates a popup window asking the user to confirm that they want
+     * to reset the simulation
+     * @author Michael Skuncik
+     * @return the user's selection in the popup window
+     */
     private boolean confirmSimReset(){
         Alert alert = new Alert(AlertType.CONFIRMATION,
                 "Are you sure you want to reset the simulation?",

@@ -105,7 +105,6 @@ public class BracketPane extends StackPane {
                 //conditional added by matt 5/7 to differentiate between left and right mouse click
                 if (mouseEvent.getButton().equals(MouseButton.PRIMARY)) {
                         BracketNode n = (BracketNode) mouseEvent.getSource();
-                        n.setRect(Color.YELLOW);  ///JOhn did this/////////////////////////////////////
                         int treeNum = bracketMap.get(n);
                         int nextTreeNum = (treeNum - 1) / 2;
                         if (!nodeMap.get(nextTreeNum).getName().equals(n.getName())) {
@@ -353,12 +352,44 @@ public class BracketPane extends StackPane {
 
         /**
          * Requests a message from current bracket to tell if the bracket
-         * has been completed.
+         * has been completed and highlights empty nodes on the bracket.
+         * @author Michael Skuncik
          *
          * @return True if completed, false otherwise.
          */
         public boolean isComplete() {
-                return currentBracket.isComplete();
+
+                if (!currentBracket.isComplete()) {
+
+                        for (BracketNode n : nodes) {
+                                if (n.getName() == "") {
+                                        n.setRect(Color.LIGHTPINK);
+                                }
+                        }
+                        clearHighlights();
+                        return false;
+                }
+                        return true;
+        }
+        /**
+         * Method that will clear the highlighted empty cells after 5 seconds
+         * @author Michael Skuncik and Zachary Lavoie
+         *
+         **/
+        private void clearHighlights(){
+
+                Timer timer = new Timer();
+                TimerTask task = new TimerTask() {
+
+                        @Override
+                        public void run() {
+                                for (BracketNode n : nodes) {
+                                               n.setRect(Color.TRANSPARENT);
+                               }
+                        }
+                };
+                final int delay = 5000;
+                timer.schedule(task, delay);
         }
 
         /**
