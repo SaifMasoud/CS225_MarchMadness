@@ -96,7 +96,7 @@ public class BracketPane extends StackPane {
         /**
          * Clears the entries of a team future wins
          *
-         * @param treeNum
+         * @param treeNum the tree number of the selected bracket
          */
         private void clearAbove(int treeNum) {
                 int nextTreeNum = (treeNum - 1) / 2;
@@ -194,7 +194,7 @@ public class BracketPane extends StackPane {
 
         /**
          * Initializes the properties needed to construct a bracket.
-         * @param currentBracket
+         * @param currentBracket the layout of the current bracket
          */
         public BracketPane(Bracket currentBracket) {
                 displayedSubtree=0;
@@ -505,7 +505,7 @@ public class BracketPane extends StackPane {
 
                 /**
                  * Constructor to draw the bracket
-                 * @param location
+                 * @param location the location of the bracket in the window
                  */
                 public Root(int location) {
                         this.location = location;
@@ -646,7 +646,7 @@ public class BracketPane extends StackPane {
 
                 /**
                  * Sets the rectangles color
-                 * @param j
+                 * @param j the color to set the rectangle
                  */
 		public void setRect(Color j) {   //john////////////
 			this.rect.setFill(j);
