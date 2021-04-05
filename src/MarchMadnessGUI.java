@@ -473,6 +473,11 @@ public class MarchMadnessGUI extends Application {
         usersDropDown.setOnAction(event -> enterUser.setText((String) usersDropDown.getValue()));
         loginPane.add(usersDropDown, 2, 1);
 
+        // Saif Masoud: add a hint for signing up.
+        Label signUpHint = new Label("To create a new account, simply enter username & " +
+                "password, and a new account will be made.");
+        loginPane.add(signUpHint, 0, 3);
+
         signButton.setOnAction(event -> {
 
             // the name user enter
