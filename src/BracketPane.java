@@ -530,7 +530,7 @@ public class BracketPane extends StackPane {
                  * @param iY integer of y
                  * @param iXO integer of x again
                  * @param iYO integer of y again
-                 * @param num number
+                 * @param num number 
                  * @param increment increment number
                  */
                 private void createVertices(int iX, int iY, int iXO, int iYO, int num, int increment) {
