@@ -76,13 +76,13 @@ public class MarchMadnessGUI extends Application {
     private HashMap<String, Bracket> playerMap;
 
     
-
+    private String name;
     private ScoreBoardTable scoreBoard;
     private TableView table;
     private BracketPane bracketPane;
     private GridPane loginP;
     private TournamentInfo teamInfo;
-    StackPane stackPane;
+    private StackPane stackPane;
     
     
     @SuppressWarnings("static-access")
@@ -138,6 +138,7 @@ public class MarchMadnessGUI extends Application {
         primaryStage.setTitle("March Madness Bracket Simulator");
         primaryStage.setScene(scene);
         primaryStage.show();
+        primaryStage.setMaximized(true);//all of us getting this back
 
         // ******************************************************************************************************
 
@@ -191,7 +192,7 @@ public class MarchMadnessGUI extends Application {
         // ******************************************************************************************************
 
         // allows the user to see their results so they may compare them with the simulated results.           Z.L.
-        new UserBracketViewer(bracketPane.getFullPane());
+        new UserBracketViewer(bracketPane.getFullPane(),name);
 
         // ******************************************************************************************************
   
@@ -475,7 +476,7 @@ public class MarchMadnessGUI extends Application {
         signButton.setOnAction(event -> {
 
             // the name user enter
-            String name = enterUser.getText();
+            name = enterUser.getText();
             // the password user enter
             String playerPass = passwordField.getText();
 
