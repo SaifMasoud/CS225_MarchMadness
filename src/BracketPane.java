@@ -51,9 +51,12 @@ public class BracketPane extends StackPane {
          * Maps the text "buttons" to it's respective grid-pane
          */
         private HashMap<StackPane, Pane> panes;
-	
-        private VBox vBox=new VBox(); ////written by JOHN E Youte
-        private HBox panegrid=new HBox();  ////written by JOHN E Youte
+	/**
+         * VBox and HBox for the Rounds
+         * @author John E Youte
+         */
+        private VBox vBox=new VBox(); 
+        private HBox panegrid=new HBox();  
         /**
          * Reference to the current bracket.
          */
@@ -77,6 +80,16 @@ public class BracketPane extends StackPane {
         private HashMap<Integer, BracketNode> nodeMap = new HashMap<>();
 
         /**
+         * The pane of the champion tree
+         */
+        private GridPane center;
+
+        /** 
+         * The pane that displays the full bracket
+         */
+        private GridPane fullPane;
+
+        /**
          * Clears the entries of a team future wins
          *
          * @param treeNum
@@ -89,9 +102,12 @@ public class BracketPane extends StackPane {
                 }
         }
         
-        
+        /**
+         * Clears the selected tree of the bracket
+         * @author Shane Callahan
+         * 
+         */
         public void clear(){
-                //Shane Callahan addition
                 //whenever displayedSubTree = 7, it is the full bracket. so clear the full bracket but the special case of making root = 0
             if(displayedSubtree == 7){
                 clearSubtree(0);
@@ -160,14 +176,16 @@ public class BracketPane extends StackPane {
                 tmp.setEffect(null);
 
         };
-
+        /**
+         * Returns the full bracket
+         * @return fullPane
+         */
         public GridPane getFullPane() {
                 return fullPane;
                 
         }
 
-        private GridPane center;
-        private GridPane fullPane;
+        
 
 
         /**
@@ -426,6 +444,10 @@ public class BracketPane extends StackPane {
                 return pane;
         }
 
+        /**
+         * Draws the final four bracket node.
+         * @return finalPane
+         */
         public Pane createFinalFour() {
                 Pane finalPane = new Pane();
                 //finalPane.setMinSize(2000, 2000);
@@ -472,8 +494,15 @@ public class BracketPane extends StackPane {
          */
         private class Root extends Pane {
 
+                /**
+                 * Location of a bracket
+                 */
                 private int location;
 
+                /**
+                 * Constructor to draw the bracket
+                 * @param location
+                 */
                 public Root(int location) {
                         this.location = location;
                         createVertices(420, 200, 100, 20, 0, 0);
@@ -581,13 +610,8 @@ public class BracketPane extends StackPane {
 				public BracketNode() {
                    
             }
-                
-                public void setBackground(Color green) {
-					// TODO Auto-generated method stub
-					
-				}
 
-				/**
+                /**
                  * @return teamName The teams name.
                  */
                 public String getName() {
@@ -602,19 +626,29 @@ public class BracketPane extends StackPane {
                         name.setText(teamName);
                 }
 
-				public Rectangle getRect() {
-					return rect;
-				}
+                /**
+                 * Gets the rectangle
+                 * @return rect
+                 */                
+		public Rectangle getRect() {
+			return rect;
+		}
 
-				@SuppressWarnings("unused")
-				public void setRect(Color j) {   //john////////////
-					this.rect.setFill(j);
-				}
+                /**
+                 * Sets the rectangles color
+                 * @param j
+                 */
+		public void setRect(Color j) {   //john////////////
+			this.rect.setFill(j);
+		}
                    
         }
         
-       //written by JOHN E Youte
-		@SuppressWarnings({ "exports", "static-access" })
+		 /**
+                  * Creates the left sides round label
+                  * @return pane
+                  * @author John E Youte
+                  */
 		public HBox roundLabels() {
 			HBox pane=new HBox();
 			 pane.setStyle("-fx-background-color: yellow;");
@@ -634,8 +668,11 @@ public class BracketPane extends StackPane {
         }
 		
 		
-		//written by JOHN E Youte
-		@SuppressWarnings({ "exports", "static-access" })
+		/**
+                 * Creates the center round label of Championship
+                 * @author John E Youte
+                 * @return pane
+                 */
 		public HBox roundLabels2() {
 			HBox pane=new HBox();
 			pane.setPrefWidth(600);
@@ -651,8 +688,11 @@ public class BracketPane extends StackPane {
 			 return pane;
         }
 		
-		//written by JOHN E Youte
-		@SuppressWarnings({ "exports", "static-access" })
+		/**
+                 * Creates the right round labels
+                 * @author John E Youte
+                 * @return pane
+                 */
 		public HBox roundLabels3() {
 			HBox pane=new HBox();
                         pane.setSpacing(20);
