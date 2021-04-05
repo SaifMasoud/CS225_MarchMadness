@@ -52,10 +52,14 @@ public class BracketPane extends StackPane {
          */
         private HashMap<StackPane, Pane> panes;
 	/**
-         * VBox and HBox for the Rounds
+         * VBox for the Rounds
          * @author John E Youte
          */
         private VBox vBox=new VBox(); 
+        /**
+         * HBox for the Rounds
+         * @author John E Youte
+         */
         private HBox panegrid=new HBox();  
         /**
          * Reference to the current bracket.
@@ -189,8 +193,8 @@ public class BracketPane extends StackPane {
 
 
         /**
-         * TODO: Reduce. reuse, recycle!
          * Initializes the properties needed to construct a bracket.
+         * @param currentBracket
          */
         public BracketPane(Bracket currentBracket) {
                 displayedSubtree=0;
@@ -522,6 +526,12 @@ public class BracketPane extends StackPane {
                  * The secret sauce... well not really,
                  * Creates 3 lines in appropriate location unless it is the last line.
                  * Adds these lines and "BracketNodes" to the Pane of this inner class
+                 * @param iX
+                 * @param iY
+                 * @param iXO
+                 * @param iYO
+                 * @param num
+                 * @param increment
                  */
                 private void createVertices(int iX, int iY, int iXO, int iYO, int num, int increment) {
                         int y = iY;
