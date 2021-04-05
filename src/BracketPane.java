@@ -526,12 +526,12 @@ public class BracketPane extends StackPane {
                  * The secret sauce... well not really,
                  * Creates 3 lines in appropriate location unless it is the last line.
                  * Adds these lines and "BracketNodes" to the Pane of this inner class
-                 * @param iX
-                 * @param iY
-                 * @param iXO
-                 * @param iYO
-                 * @param num
-                 * @param increment
+                 * @param iX integer of x
+                 * @param iY integer of y
+                 * @param iXO integer of x again
+                 * @param iYO integer of y again
+                 * @param num number
+                 * @param increment increment number
                  */
                 private void createVertices(int iX, int iY, int iXO, int iYO, int num, int increment) {
                         int y = iY;
